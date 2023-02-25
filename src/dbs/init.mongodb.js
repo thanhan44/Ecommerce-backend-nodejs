@@ -2,11 +2,14 @@
 
 const mongoose = require("mongoose");
 const { countConnect } = require("../helpers/check.connect");
+const {
+  db: { host, port, name },
+} = require("../configs/config.mongodb");
 /*
  * If we have issue MongooseServerSelectionError: connect ECONNREFUSED ::1:27017}
  * ===> change 'localhost' --> '127.0.0.1'
  */
-const connectString = `mongodb://127.0.0.1:27017/Ecommerce_dev`;
+const connectString = `mongodb://${host}:${port}/${name}`;
 
 // Use Singleton Design Pattern
 class Database {
@@ -17,7 +20,7 @@ class Database {
   //connect
   connect(type = "mongodb") {
     //dev
-    if (1 === 1) {
+    if (process.env.NODE_ENV == "dev") {
       mongoose.set("debug", true);
       mongoose.set("debug", { color: true });
     }
