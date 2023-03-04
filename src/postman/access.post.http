@@ -1,0 +1,13 @@
+##
+## Extension: REST Client, HTTP Client
+##
+@url_dev = http://localhost:3001/v1/api
+### signup
+POST {{url_dev}}/shop/signup
+Content-Type: application/json
+
+{
+  "name": "Shop TIPS",
+  "email": "shoptipjs01@shop.com",
+  "password": "abc123"
+}
